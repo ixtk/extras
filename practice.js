@@ -65,3 +65,6 @@ for (let i = 0; users.length > i; i++) {
 // .length
 // !, %
 // !==, ===
+
+// Challenge:
+// https://gist.github.com/ixtk/0be64f654cdca30090e614b3ffa70218
