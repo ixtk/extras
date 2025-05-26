@@ -1,0 +1,35 @@
+@import url('./main-styles.css');
+
+.products-container {
+  padding-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, auto));
+  gap: 24px;
+
+  img {
+    border-radius: var(--border-radius);
+  }
+
+  .category {
+    margin: 8px 0;
+    color: var(--gray-500);
+  }
+
+  .title {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+}
+
+.price-col {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.thumbnail img {
+  max-height: 170px;
+  width: 100%;
+  object-fit: cover;
+}
