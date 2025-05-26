@@ -1,30 +1,63 @@
-// commonjs style
-// const express = require('express')
+import express from "express";
 
-import express from 'express'
-import path from 'path'
+const app = express();
 
-import { fileURLToPath } from "url";
+app.use("/assets", express.static("./assets"));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-console.log(__dirname)
-
-const app = express()
-
-app.use(express.static("./assets"))
+app.set("view engine", "ejs");
+// to change view directory: app.set('views', ...)
 
 app.get("/products", (req, res) => {
-  console.log(req.ip, req.path)
+  const products = [
+    {
+      id: 1,
+      title: "Premium Wireless Headphones",
+      category: "Electronics",
+      price: 299.99,
+      salePrice: 149.99,
+      imageUrl: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+      alt: "Headphones",
+    },
+    {
+      id: 2,
+      title: "Sport Running Shoes",
+      category: "Footwear",
+      price: 89.99,
+      imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+      alt: "Sneakers",
+    },
+    {
+      id: 3,
+      title: "Stylish Smartwatch",
+      category: "Wearables",
+      price: 149.99,
+      salePrice: 179.99,
+      imageUrl:
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/s10-case-unselect-gallery-1-202503_FMT_WHH?wid=752&hei=720&fmt=p-jpg&qlt=80&.v=T1poMzZuRzBxQ1RzQmhMUHprUE5LZHlVRllKam5abHNZRGludXlMbytKNHlidkR0R3NjTWwrQVNiZ3I2RERPclovcWdSWUQxempSa2dIVnhsNHVhN3ZXdlJRYjdSZWJHVUh4aFVDb0hhVVcwcHBldHBjSVk3TndkU25NUENJakg",
+      alt: "Smartwatch",
+    },
+    {
+      id: 4,
+      title: "Waterproof Travel Backpack",
+      category: "Accessories",
+      price: 59.99,
+      salePrice: 79.99,
+      imageUrl:
+        "https://cdn.thewirecutter.com/wp-content/media/2023/11/travelbackpacks-2048px-03628.jpg?auto=webp&quality=75&width=1024",
+      alt: "Backpack",
+    },
+  ];
 
-  // res.send("OK");
-  // C:\Users\Work\Desktop\extras\commerce\index.html
-  res.sendFile('index.html', {
-    root: __dirname
-  })
-})
+  res.render("products", {
+    title: "Product List",
+    products: products,
+  });
+});
 
-app.listen(3000, () => {
-  console.log("Running!")
-})
+app.get("/products/:productId", (req, res) => {
+  res.render("singleProduct");
+});
+
+app.listen(3001, () => {
+  console.log("Running!");
+});
