@@ -1,0 +1,14 @@
+@import url('./main-styles.css');
+
+.product-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-form button {
+  margin-left: auto;
+  margin-top: 8px;
+}
