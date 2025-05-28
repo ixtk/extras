@@ -12,19 +12,23 @@
   </head>
   <body>
     <div class="container">
+      <%- include('./partials/_header.ejs') %>
       <div class="product-container">
         <div class="thumbnail">
           <img
-            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
+            src="<%= product.imageUrl %>"
             alt="Product image"
           />
         </div>
         <div class="details">
-          <h2 class="title">Premium Wireless Headphones</h2>
-          <p class="category">Electronics</p>
+          <h2 class="title"><%= product.title %></h2>
+          <p class="category"><%= product.category %></p>
           <div class="price-container">
-            <p class="price">$299.99</p>
-            <p class="sale-price">$179.99</p>
+            <p class="price">$<%= product.price %></p>
+
+            <% if (product.salePrice) { %>
+              <p class="sale-price">$<%= product.salePrice %></p>
+            <% } %>
           </div>
 
           <div class="cart-actions">
