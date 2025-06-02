@@ -8,8 +8,7 @@
   </head>
   <body class="container">
     <%- include('./partials/_header.ejs') %>
-    <form class="product-form">
-      <h2 class="page-title"><%= title %></h2>
+    <form class="product-form" action="/products/new" method="POST">
       <div>
         <label for="product-title">Title</label>
         <input type="text" id="product-title" name="title" />
