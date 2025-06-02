@@ -11,26 +11,26 @@
     <form class="product-form">
       <h2 class="page-title"><%= title %></h2>
       <div>
-        <label for="">Title</label>
-        <input type="text" />
+        <label for="product-title">Title</label>
+        <input type="text" id="product-title" name="title" />
       </div>
       <div>
-        <label for="">Category</label>
-        <select name="" id="">
+        <label for="product-category">Category</label>
+        <select name="category" id="product-category">
           <option>Electronics</option>
         </select>
       </div>
       <div>
-        <label for="">Price</label>
-        <input type="number" />
+        <label for="product-price">Price</label>
+        <input type="number" id="product-price" name="price" />
       </div>
       <div>
-        <label for="">Sale Price</label>
-        <input type="number" />
+        <label for="product-sale-price">Sale Price</label>
+        <input type="number" id="product-sale-price" name="salePrice" />
       </div>
       <div>
-        <label for="">Image URL</label>
-        <input type="url" />
+        <label for="product-image">Image URL</label>
+        <input type="url" id="product-image" name="imageUrl" />
       </div>
       <button class="btn btn-primary">Save</button>
     </form>
