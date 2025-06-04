@@ -38,6 +38,10 @@
               <button class="btn">+</button>
             </div>
             <button class="btn btn-secondary">Add to cart</button>
+
+            <form action="/products/<%= product.id %>" method="post">
+              <button class="btn btn-outline">Delete</button>
+            </form>
           </div>
         </div>
       </div>
