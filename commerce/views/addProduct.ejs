@@ -14,29 +14,39 @@
       <input type="time">
       <input type="week">
       <input type="month"> -->
-      <div>
+      <div class="title">
         <label for="product-title">Title</label>
         <input type="text" id="product-title" name="title" required minlength="2" />
       </div>
-      <div>
+      <div class="category">
         <label for="product-category">Category</label>
         <select name="category" id="product-category" required>
-          <option>Electronics</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Home">Home</option>
+          <option value="Toys">Toys</option>
         </select>
       </div>
-      <div>
+      <div class="price">
         <label for="product-price">Price</label>
         <input type="number" id="product-price" name="price" required min="1" max="100000" />
       </div>
-      <div>
+      <div class="sale-price">
         <label for="product-sale-price">Sale Price</label>
         <input type="number" id="product-sale-price" name="salePrice" min="1" max="100000" />
       </div>
-      <div>
+      <div class="img-url">
         <label for="product-image">Image URL</label>
         <input type="url" id="product-image" name="imageUrl" required />
       </div>
-      <button class="btn btn-primary">Save</button>
+      <div class="description">
+        <label for="description">Description</label>
+        <textarea name="description" rows="4" id="description"></textarea>
+      </div>
+      <div class="save">
+        <button class="btn btn-primary">Save</button>
+      </div>
     </form>
   </body>
 </html>

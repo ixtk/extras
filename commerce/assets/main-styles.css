@@ -65,7 +65,7 @@ p {
 }
 
 :root {
-    --border-radius: 5px;
+    --border-radius: 9px;
     --card-spacing: 1rem;
 
     --purple-900: hsl(271, 81%, 46%);
@@ -174,7 +174,6 @@ body,
 input,
 textarea,
 select {
-    height: 100%;
     padding: 0.5rem;
     border: 1px solid var(--gray-300);
     border-radius: var(--border-radius);
