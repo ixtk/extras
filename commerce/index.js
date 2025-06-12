@@ -1,67 +1,89 @@
-import express from "express";
-import mongoose from "mongoose";
-import { Product } from "./models.js";
+import express from "express"
+import mongoose from "mongoose"
+import { Product, User } from "./models.js"
 
-const app = express();
+const app = express()
 
-app.use("/assets", express.static("./assets"));
-app.use(express.urlencoded({ extended: true }));
+app.use("/assets", express.static("./assets"))
+app.use(express.urlencoded({ extended: true }))
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs")
 // to change view directory: app.set('views', ...)
 
 app.get("/", (req, res) => {
-  res.redirect("/products");
-});
+  res.redirect("/products")
+})
 
 app.get("/products", async (req, res) => {
-  const products = await Product.find();
+  const products = await Product.find()
 
   res.render("products", {
     title: "Product List",
-    products: products,
-  });
-});
+    products: products
+  })
+})
 
 app.post("/products/new", async (req, res) => {
-  const newProductValues = req.body;
+  const newProductValues = req.body
 
-  const newProduct = await Product.create(newProductValues);
+  const newProduct = await Product.create(newProductValues)
 
-  res.redirect(`/products/${newProduct.id}`);
-});
+  res.redirect(`/products/${newProduct.id}`)
+})
 
 app.get("/products/new", (req, res) => {
   res.render("addProduct", {
-    title: "Add a new product",
-  });
-});
+    title: "Add a new product"
+  })
+})
 
 app.get("/products/:productId", async (req, res) => {
   // req.params is an object
-  console.log(req.params);
+  console.log(req.params)
 
-  const productId = req.params.productId;
+  const productId = req.params.productId
 
-  const foundProduct = await Product.findById(productId);
+  const foundProduct = await Product.findById(productId)
 
   res.render("singleProduct", {
-    product: foundProduct,
-  });
-});
+    product: foundProduct
+  })
+})
 
 app.post("/products/:productId", async (req, res) => {
-  const productId = req.params.productId;
+  const productId = req.params.productId
 
-  await Product.findByIdAndDelete(productId);
+  await Product.findByIdAndDelete(productId)
 
   res.redirect("/products")
-});
+})
 
-const connection = await mongoose.connect("mongodb://localhost:27017/commerce");
+app.get("/login", (req, res) => {
+  res.render("login")
+})
 
-console.log("Connected to the DB: commerce");
+app.get("/register", (req, res) => {
+  res.render("register", { error: null })
+})
+
+app.post("/register", async (req, res) => {
+  const newUserValues = req.body
+
+  if (newUserValues.password !== newUserValues.confirmPassword) {
+    return res.render("register", {
+      error: "Passwords do not match"
+    })
+  }
+
+  await User.create(newUserValues)
+
+  res.redirect("/products")
+})
+
+const connection = await mongoose.connect("mongodb://localhost:27017/commerce")
+
+console.log("Connected to the DB: commerce")
 
 app.listen(3002, () => {
-  console.log("Running!");
-});
+  console.log("Running!")
+})

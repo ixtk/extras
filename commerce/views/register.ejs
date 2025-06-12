@@ -3,22 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/auth.css">
+    <link rel="stylesheet" href="/assets/auth.css" />
     <title>Document</title>
   </head>
   <body class="container">
     <%- include('./partials/_header.ejs') %>
     <div class="form-container">
-      <form class="card auth-form" action="#" method="POST">
+      <% if (error) { %>
+        <p class="error"><%= error %></p>
+      <% } %>
+      <form class="card auth-form" action="/register" method="POST">
         <h2 class="form-title">Register</h2>
         <p class="form-desc">Enter your information to create an account</p>
         <div class="input-group">
           <label for="email">Username</label>
-          <input
-            id="username"
-            name="name"
-            type="text"
-          />
+          <input id="username" name="username" type="text" />
         </div>
         <div class="input-group">
           <label for="email">Email</label>
@@ -31,19 +30,11 @@
         </div>
         <div class="input-group">
           <label for="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-          />
+          <input id="password" name="password" type="password" />
         </div>
         <div class="input-group">
           <label for="confirmPassword">Confirm password</label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-          />
+          <input id="confirmPassword" name="confirmPassword" type="password" />
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>

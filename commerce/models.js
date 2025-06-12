@@ -12,4 +12,15 @@ const productSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+const userSchema = mongoose.Schema(
+  {
+    username: { type: String, required: true },
+    email: { type: String, required: true },
+    password: { type: String, required: true }
+  },
+  { timestamps: true }
+)
+
 export const Product = mongoose.model("Product", productSchema);
+
+export const User = mongoose.model("User", userSchema)
